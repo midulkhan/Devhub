@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 type CreateArticleBody = {
+  slug?: string;
   title?: string;
   description?: {
     title?: string;
@@ -61,6 +62,7 @@ export async function POST(request: NextRequest) {
       select: {
         id: true,
         title: true,
+        slug: true,
         created_at: true,
       },
     });
@@ -69,6 +71,7 @@ export async function POST(request: NextRequest) {
       .map((post) => ({
         id: post.id.toString(),
         title: post.title,
+        slug: post.slug,
         similarity: getSimilarity(title, post.title),
         created_at: post.created_at,
       }))
@@ -91,10 +94,11 @@ export async function POST(request: NextRequest) {
     const article = await prisma.articles.create({
       data: {
         title,
+        slug: title.toLowerCase().replace(/\s+/g, "-"),
         description: body.description,
         code: body.code ?? null,
         checklist: body.checklist ?? null,
-        recomendation: body.recommendation ?? null,
+        recommendation: body.recommendation ?? null,
       },
     });
 

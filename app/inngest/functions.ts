@@ -13,6 +13,7 @@ const tvly = tavily({
 });
 
 type GeneratedPost = {
+  slug: string;
   title: string;
   description: {
     title: string;
@@ -67,7 +68,7 @@ export const aiGeneratingPost = inngest.createFunction(
     name: "Generate unique AI blog post",
     retries: 3,
     triggers: {
-      cron: "* * * * *", // every 6 hours
+      cron: "* * * * *", // every 1m
     },
   },
   async ({ step }) => {
@@ -97,7 +98,7 @@ export const aiGeneratingPost = inngest.createFunction(
             },
           ),
           tvly.search(
-            "Elementor WordPress PHP compatibility fatal error recent issue",
+            "site:stackoverflow.com/questions/tagged/elementor Wordpress and woocommerce issues recent bugs",
             {
               maxResults: 5,
               searchDepth: "advanced",
@@ -119,6 +120,7 @@ export const aiGeneratingPost = inngest.createFunction(
       const posts = await prisma.articles.findMany({
         select: {
           title: true,
+          slug: true,
         },
         orderBy: {
           created_at: "desc",
@@ -126,7 +128,7 @@ export const aiGeneratingPost = inngest.createFunction(
         take: 100,
       });
 
-      return posts.map((post) => post.title);
+      return posts.map((post) => ({ title: post.title, slug: post.slug }));
     });
 
     const generatedPost = await step.run("generate-unique-post", async () => {
@@ -171,6 +173,7 @@ export const aiGeneratingPost = inngest.createFunction(
 
                 {
                 "title": "string",
+                "slug": "string",
                 "description": {
                     "title": "string",
                     "content": "string"
@@ -201,6 +204,7 @@ export const aiGeneratingPost = inngest.createFunction(
         select: {
           id: true,
           title: true,
+          slug: true,
         },
       });
 
@@ -208,6 +212,7 @@ export const aiGeneratingPost = inngest.createFunction(
         .map((post) => ({
           id: post.id.toString(),
           title: post.title,
+          slug: post.slug,
           similarity: getSimilarity(generatedPost.title, post.title),
         }))
         .filter((post) => post.similarity >= 0.55)
@@ -232,7 +237,8 @@ export const aiGeneratingPost = inngest.createFunction(
           description: generatedPost.description,
           code: generatedPost.code ?? null,
           checklist: generatedPost.checklist ?? null,
-          recomendation: generatedPost.recommendation ?? null,
+          recommendation: generatedPost.recommendation ?? null,
+          slug: generatedPost.slug ?? null,
         },
       });
 

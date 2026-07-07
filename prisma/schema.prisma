@@ -10,13 +10,14 @@ datasource db {
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model Articles {
-  id            BigInt   @default(autoincrement())
-  created_at    DateTime @default(now()) @db.Timestamptz(6)
-  title         String
-  description   Json
-  code          Json?
-  checklist     Json?    @db.Json
-  recomendation String?
+  id             BigInt   @default(autoincrement())
+  created_at     DateTime @default(now()) @db.Timestamptz(6)
+  title          String
+  description    Json
+  code           Json?
+  checklist      Json?    @db.Json
+  recommendation String?
+  slug           String   @unique @default("NULL")
 
-  @@id([id, title, description], map: "Articles_pkey")
+  @@id([id, title, description])
 }

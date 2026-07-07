@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
       id: article.id.toString(),
     }));
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, total: articles.length, data });
   } catch (error) {
     console.error("Error fetching articles:", error);
 
