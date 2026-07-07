@@ -10,11 +10,13 @@ type CreateArticleBody = {
     title?: string;
     content?: string;
   };
-  code?: {
-    language?: string;
-    snippet?: string;
-  } | null;
-  checklist?: string[] | null;
+  code?:
+    | {
+        language?: string;
+        snippet?: string;
+      }
+    | {};
+  checklist?: string[] | {};
   recommendation?: string | null;
 };
 
@@ -96,8 +98,8 @@ export async function POST(request: NextRequest) {
         title,
         slug: title.toLowerCase().replace(/\s+/g, "-"),
         description: body.description,
-        code: body.code ?? null,
-        checklist: body.checklist ?? null,
+        code: body.code,
+        checklist: body.checklist,
         recommendation: body.recommendation ?? null,
       },
     });
