@@ -9,11 +9,20 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "@react-three/fiber": "^9.6.1",
     "@shadergradient/react": "^2.4.20",
+    "@tavily/core": "^0.7.6",
     "camera-controls": "^3.1.2",
+    "dotenv": "^17.4.2",
+    "i": "^0.3.7",
+    "inngest": "^4.11.0",
     "lucide-react": "^1.23.0",
     "next": "16.2.10",
+    "npm": "^11.18.0",
+    "openai": "^6.45.0",
+    "pg": "^8.22.0",
     "react": "19.2.4",
     "react-code-blocks": "^0.1.6",
     "react-dom": "19.2.4",
@@ -23,12 +32,15 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.185.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "prisma": "^7.8.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.0",
     "typescript": "^5"
   }
 }

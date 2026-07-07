@@ -57,11 +57,11 @@ export default function SaasLandingHero() {
         <div className="mx-auto max-w-7xl overflow-hidden px-5 pb-20 pt-20 md:px-8 md:pb-28 md:pt-24">
           {/* Hero heading */}
           <div className="mx-auto max-w-4xl text-center flex flex-col justify-center items-center gap-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-300/20 bg-black/15 px-4 py-2 text-xs font-medium text-orange-100 shadow-[0_0_35px_rgba(249,115,22,0.14)] backdrop-blur-xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-300/20 bg-white/5 px-4 py-2 text-xs font-medium text-orange-100 shadow-[0_0_35px_rgba(249,115,22,0.14)] backdrop-blur-xl">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-60" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
 
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-400" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
               </span>
               AI-powered WordPress issue intelligence
               <ChevronRight className="h-3.5 w-3.5 text-orange-400" />
@@ -74,7 +74,7 @@ export default function SaasLandingHero() {
               </span>
             </h1>
 
-            <p className="mx-auto max-w-xl text-sm leading-6 text-white/55 md:text-base">
+            <p className="mx-auto max-w-xl text-sm leading-6 text-white md:text-base">
               Practical fixes for WordPress errors, WooCommerce issues, plugin
               conflicts, PHP bugs, performance problems, and developer-level
               troubleshooting—explained step by step.
@@ -99,15 +99,15 @@ export default function SaasLandingHero() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/45">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-white/80">
               {[
                 "Current issue tracking",
                 "AI-assisted research",
                 "Developer-ready solutions",
               ].map((item) => (
                 <span key={item} className="flex items-center gap-2">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full border border-orange-300/20 bg-orange-500/10">
-                    <Check className="h-3 w-3 text-orange-300" />
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full border border-orange-300/20 ">
+                    <Check className="h-3 w-3 text-white" />
                   </span>
 
                   {item}

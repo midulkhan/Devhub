@@ -98,7 +98,7 @@ export default function Articles() {
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
         <div className="mb-14 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gray-100    px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black">
               <Zap aria-hidden="true" className="size-4" />
               Latest Fixes
             </span>
@@ -144,30 +144,6 @@ export default function Articles() {
                 motion-reduce:transition-none
               "
             >
-              <Link
-                href={post.href}
-                aria-label={post.title}
-                className="relative block h-48 overflow-hidden"
-              >
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  sizes="
-                    (max-width: 640px) 100vw,
-                    (max-width: 1024px) 50vw,
-                    33vw
-                  "
-                  className="
-                    object-cover object-top
-                    transition-transform duration-500
-                    group-hover:scale-105
-                  "
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-              </Link>
-
               <div className="flex flex-1 flex-col p-5">
                 <Link href={post.href}>
                   <h3
