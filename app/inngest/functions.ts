@@ -68,7 +68,7 @@ export const aiGeneratingPost = inngest.createFunction(
     name: "Generate unique AI blog post",
     retries: 3,
     triggers: {
-      cron: "* * * * *", // every 1m
+      cron: "0 */3 * * *", // every 3h
     },
   },
   async ({ step }) => {

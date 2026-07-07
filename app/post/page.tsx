@@ -26,7 +26,7 @@ export default async function CategoryPage({
   const { page } = await searchParams;
 
   const currentPage = Number(page ?? 1);
-  const limit = 6;
+  const limit = 16;
 
   const baseURL =
     process.env.NODE_ENV === "development"
