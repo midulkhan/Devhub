@@ -10,13 +10,11 @@ type CreateArticleBody = {
     title?: string;
     content?: string;
   };
-  code?:
-    | {
-        language?: string;
-        snippet?: string;
-      }
-    | {};
-  checklist?: string[] | {};
+  code?: {
+    language?: string;
+    snippet?: string;
+  };
+  checklist?: string[];
   recommendation?: string | null;
 };
 
@@ -100,7 +98,7 @@ export async function POST(request: NextRequest) {
         description: body.description,
         code: body.code,
         checklist: body.checklist,
-        recommendation: body.recommendation ?? null,
+        recommendation: body.recommendation || null,
       },
     });
 

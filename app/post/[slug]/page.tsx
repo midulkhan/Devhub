@@ -225,7 +225,7 @@ export default async function BlogDetailsPage({ params }: props) {
                 style={materialDark}
                 className="rounded-2xl text-sm"
               >
-                {posts?.code?.snippet}
+                {posts?.code?.snippet ?? ""}
               </SyntaxHighlighter>
             </section>
 

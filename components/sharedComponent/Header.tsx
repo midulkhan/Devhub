@@ -94,14 +94,14 @@ export default function Header() {
         {/* Mobile navigation */}
         {menuOpen && (
           <div className="absolute left-4 right-4 top-22 rounded-2xl border border-white/10 bg-[#080b15]/90 p-3 shadow-2xl backdrop-blur-2xl lg:hidden">
-            {navigation.map((item) => (
+            {navigation.map((item, index) => (
               <Link
-                key={item}
+                key={index}
                 href="#"
                 onClick={() => setMenuOpen(false)}
                 className="block rounded-xl px-4 py-3 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
               >
-                {item}
+                {item.href}
               </Link>
             ))}
           </div>

@@ -15,7 +15,6 @@ async function main() {
       },
     ],
     model: "deepseek-v4-pro",
-    thinking: { type: "enabled" },
     reasoning_effort: "high",
     stream: false,
     max_tokens: 200,

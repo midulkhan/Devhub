@@ -22,7 +22,7 @@ type GeneratedPost = {
   code: {
     language: string;
     snippet: string;
-  } | null;
+  };
   checklist: string[];
   recommendation: string;
 };
@@ -235,9 +235,9 @@ export const aiGeneratingPost = inngest.createFunction(
         data: {
           title: generatedPost.title,
           description: generatedPost.description,
-          code: generatedPost.code ?? null,
-          checklist: generatedPost.checklist ?? null,
-          recommendation: generatedPost.recommendation ?? null,
+          code: generatedPost.code,
+          checklist: generatedPost.checklist,
+          recommendation: generatedPost.recommendation,
           slug: generatedPost.slug ?? null,
         },
       });
