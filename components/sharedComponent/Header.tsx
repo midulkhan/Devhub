@@ -4,23 +4,38 @@ import { useState } from "react";
 import { ArrowRight, Code2, Menu, Search, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navigation = [
-  "Latest Issues",
-  "WordPress",
-  "WooCommerce",
-  "PHP Fixes",
-  "Code Snippets",
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Blog",
+    href: "/post",
+  },
+  {
+    name: "About",
+    href: "/about",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
+  },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   return (
-    <header className=" z-50 bg-transparent absolute top-0 w-full backdrop-blur-2xl">
+    <header
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${isHome ? "bg-transparent" : "bg-[#020617]/90 backdrop-blur-xl"}`}
+    >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
         {/* Logo */}
-        <Link href="#" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/assets/site-logo.webp"
             alt="DevHub Logo"
@@ -32,13 +47,13 @@ export default function Header() {
 
         {/* Desktop navigation */}
         <nav className="hidden items-center gap-1 rounded-xl border border-white/10 bg-white/5 p-1.5 backdrop-blur-xl lg:flex">
-          {navigation.map((item) => (
+          {navigation.map((item, index) => (
             <Link
-              key={item}
-              href="#"
+              key={index}
+              href={item.href}
               className="rounded-lg px-3.5 py-2 text-sm font-medium text-white transition hover:bg-white/10 hover:text-white"
             >
-              {item}
+              {item.name}
             </Link>
           ))}
         </nav>

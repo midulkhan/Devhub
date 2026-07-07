@@ -15,6 +15,8 @@ import {
   Wrench,
   X,
 } from "lucide-react";
+import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 const tableOfContents = [
   "The Issue",
@@ -62,7 +64,7 @@ export default async function BlogDetailsPage({ params }: props) {
 
   const data = await request.json();
   if (!data.success) {
-    console.error("Failed to fetch posts:", data.error);
+    notFound();
   }
 
   const posts: Article = data.data;
@@ -70,7 +72,7 @@ export default async function BlogDetailsPage({ params }: props) {
 
   return (
     <main className="bg-white">
-      <section className="py-10 md:py-16">
+      <section className="py-16 md:py-16">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 md:px-6 lg:grid-cols-[220px_minmax(0,760px)] lg:gap-12">
           <aside className="hidden lg:block">
             <div className="sticky top-28">
@@ -132,7 +134,7 @@ export default async function BlogDetailsPage({ params }: props) {
               </span>
             </div>
 
-            <div className="relative mt-8 aspect-[16/7] overflow-hidden rounded-2xl bg-zinc-100">
+            <div className="relative mt-8 aspect-16/7 overflow-hidden rounded-2xl bg-zinc-100">
               <Image
                 src={"/assets/web_banner.webp"}
                 alt="WooCommerce cart issue"
